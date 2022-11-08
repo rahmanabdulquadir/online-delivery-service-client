@@ -8,7 +8,7 @@ const ServiceCard = ({ service }) => {
         <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Shoes!</h2>
+        <h2 className="card-title">{title}</h2>
         <p>Price: ${price}</p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Buy Now</button>
