@@ -5,6 +5,7 @@ const Header = () => {
 
   const navItems = <>
   <li><Link to={'/'}>Home</Link></li>
+  <li><Link to={'/'}>Services</Link></li>
   <li><Link to={'/login'}>Login</Link></li>
   </>
 
