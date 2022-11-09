@@ -6,10 +6,10 @@ const MyReviews = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user.email}`)
+    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
-  }, [user.email]);
+  }, [user?.email]);
 
   const handleDelete = id => {
     const deleteReview = window.confirm("Are you sure you want to delete this review?")
@@ -29,6 +29,28 @@ const MyReviews = () => {
     }
   }
 
+  const handleStatusUpdate = id => {
+    fetch(`http://localhost:5000/reviews/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({status: "Approved"})
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      if(data.modifiedCount > 0){
+        const remaining = reviews.filter(rvw => rvw._id !== id)
+        const approving = reviews.find(rvw => rvw._id ===id)
+        approving.status = 'Approved'
+
+        const newReviews = [approving, ...remaining]
+        setReviews(newReviews)
+      }
+    })
+  }
+
   return (
     <div>
       <h2 className="text-5xl">You have {reviews.length}</h2>
@@ -44,7 +66,7 @@ const MyReviews = () => {
               <th>Service Name</th>
               <th>Customer Name</th>
               <th>Review</th>
-              <th>phone</th>
+              <th>Edit Review</th>
               <th></th>
             </tr>
           </thead>
@@ -54,6 +76,7 @@ const MyReviews = () => {
               key={review._id}
               review={review}
               handleDelete={handleDelete}
+              handleStatusUpdate={handleStatusUpdate}
               ></MyReviewsRows>)
             }
           </tbody>

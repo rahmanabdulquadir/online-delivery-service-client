@@ -12,7 +12,7 @@ const Header = () => {
     user?.email ?
     <>
      <li><Link to={'/reviews'}>My Reviews</Link></li>
-     <li><Link to={'/login'}>LogOut</Link></li>
+     <li><Link to={'/login'}>Logout</Link></li>
     </>
     :
     <li><Link to={'/login'}>Login</Link></li>
