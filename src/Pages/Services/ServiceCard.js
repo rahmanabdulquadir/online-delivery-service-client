@@ -10,7 +10,7 @@ const ServiceCard = ({ service }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <p>Price: ${price}</p>
+        <p className="text-semibold">Price: ${price}</p>
         <div className="card-actions justify-end">
           <Link to={`/service/${_id}`}>
             <button className="btn btn-primary">Detail</button>
