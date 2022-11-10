@@ -33,6 +33,8 @@ const SignUp = () => {
           <form onSubmit={handleSignUp} className="card-body">
             <div className="form-control">
               <label className="label">
+                placeholder="password"
+                className="input input-bordered"
                 <span className="label-text"> Name</span>
               </label>
               <input
@@ -47,7 +49,7 @@ const SignUp = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                type="email"
                 name='email'
                 placeholder="email"
                 className="input input-bordered"
@@ -59,10 +61,9 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 name='password'
-                placeholder="password"
-                className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control mt-6">

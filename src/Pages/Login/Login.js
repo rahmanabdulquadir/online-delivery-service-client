@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import useTitle from "../../hooks/UseTitle";
 import loginImg from "../../images/login/undraw_on_the_way_re_swjt.svg";
 
 const Login = () => {
 
-  const {login, googleSignIn} = useContext(AuthContext)
+  const {login, googleSignIn,} = useContext(AuthContext)
+  const navigate = useNavigate()
   useTitle('Login')
 
   const handleLogin = event => {
@@ -16,10 +17,31 @@ const Login = () => {
     const password = form.password.value;
     login(email, password)
     .then(result => {
-      const user = result.user
-      console.log(user)
+      const user = result.user;
+     
+
+      const currentUser = {
+        email: user.email
+      }
+
+      console.log(currentUser)
+
+      fetch('http://localhost:5000/jwt', {
+        method: "POST",
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(currentUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        localStorage.setItem('app-token', data.token)
+      })
+      form.reset();
+      navigate('/');
     })
-    .then(err => console.error(err))
+    .catch(error => console.error(error))
   }
 
   const handleGoogleSignIn = () => {
@@ -30,6 +52,7 @@ const Login = () => {
     })
     .then(err => console.error(err))
   }
+ 
 
   
 
@@ -47,10 +70,11 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -58,10 +82,11 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
+                required
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">

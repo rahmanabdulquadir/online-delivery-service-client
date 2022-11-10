@@ -14,9 +14,7 @@ const Services3 = () => {
       <div className="text-center mb-8">
         <h2 className="text-4xl font font-semibold">Type Of Services</h2>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores
-          eaque adipisci magnam fuga. Ipsam voluptas autem ad labore doloribus
-          quis.
+          Here is a lot of type of service that I provide. There is a different kind of delivery service that i provide. Choose your from here
         </p>
       </div>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-24">
