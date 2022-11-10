@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import useTitle from "../../hooks/UseTitle";
 import MyReviewsRows from "./MyReviewsRows";
 
 const MyReviews = () => {
@@ -10,6 +11,7 @@ const MyReviews = () => {
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [user?.email]);
+  useTitle('My Review')
 
   const handleDelete = id => {
     const deleteReview = window.confirm("Are you sure you want to delete this review?")
@@ -65,7 +67,7 @@ const MyReviews = () => {
         </th>
               <th>Service Name</th>
               <th>Customer Name</th>
-              <th>Review</th>
+              <th>Customer Review</th>
               <th>Edit Review</th>
               <th></th>
             </tr>

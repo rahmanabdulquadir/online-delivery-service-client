@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import useTitle from "../../hooks/UseTitle";
 import loginImg from "../../images/login/undraw_on_the_way_re_swjt.svg";
 
 const Login = () => {
 
   const {login, googleSignIn} = useContext(AuthContext)
+  useTitle('Login')
 
   const handleLogin = event => {
     event.preventDefault()

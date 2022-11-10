@@ -4,7 +4,7 @@ const FAQS = () => {
   return (
     <div className="mt-20 mb-20">
       <div className="text-3xl font-semibold text-center">Public Stats</div>
-      <p className="text-l text-center mb-6">Here is the Public States of why people rely on our services. <br /> And why you should rely on us too. </p>
+      <p className="text-l text-center mb-6">Here is the Public States of why people rely on my services. <br /> And why you should rely on me too. </p>
       <div className="stats shadow w-full">
         <div className="stat">
           <div className="stat-figure text-primary">

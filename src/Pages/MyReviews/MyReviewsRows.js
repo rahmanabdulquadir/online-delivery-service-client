@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import ServiceDetail from "../Services/ServiceDetail";
 
 const MyReviewsRows = ({review, handleDelete, handleStatusUpdate}) => {
-  const {_id, serviceName, price, service, message, customer, status} = review;
+  const {_id, serviceName, service, message, customer, status} = review;
   const [reviewService, setReviewService] = useState({})
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const MyReviewsRows = ({review, handleDelete, handleStatusUpdate}) => {
           </div>
           <div>
             <div className="font-bold">{serviceName}</div>
-            <div className="text-sm opacity-50">{message}</div>
+            {/* <div className="text-sm opacity-50">{message}</div> */}
           </div>
         </div>
       </td>

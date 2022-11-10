@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import useTitle from "../../hooks/UseTitle";
+import MyReviewsRows from "../MyReviews/MyReviewsRows";
 
 const ServiceDetail = () => {
   const { title, _id, img, price, description } = useLoaderData();
   const { user } = useContext(AuthContext);
+  useTitle('Service Detail')
 
   const handleReviewBtn = event => {
     event.preventDefault()
@@ -71,7 +74,6 @@ const ServiceDetail = () => {
                 <input className="btn" type="submit" value="write your review" />
 
         </form>
-
       </div>
     </div>
   );

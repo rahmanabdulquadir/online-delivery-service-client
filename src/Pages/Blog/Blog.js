@@ -1,8 +1,10 @@
 import React from "react";
+import useTitle from "../../hooks/UseTitle";
 
 const Blog = () => {
+  useTitle('Blog')
   return (
-    <div className="grid gap-12 grid-cols-4 mt-28 w-full mx-auto">
+    <div className="grid gap-12 lg:grid-cols-4 mt-28 w-full mx-auto">
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="text-3xl font-semibold">

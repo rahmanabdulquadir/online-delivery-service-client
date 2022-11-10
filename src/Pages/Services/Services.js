@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../hooks/UseTitle';
 import ServiceCard from './ServiceCard';
 
 const Services = () => {
@@ -8,6 +9,7 @@ const Services = () => {
     .then(res => res.json())
     .then(data => setServices(data))
   },[])
+  useTitle('Add Services')
   return (
     <div className='mt-14'>
       <div className='text-center mb-8'>
